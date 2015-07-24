@@ -1,0 +1,50 @@
+fileTypes: [
+  "tst"
+]
+name: "Test"
+patterns: [
+  {
+    include: "#function_decl"
+  }
+  {
+    include: "#function_call"
+  }
+]
+repository:
+  function_call:
+    begin: "([[:alpha:]_][[:word:]!]*)(\\()"
+    beginCaptures:
+      "1":
+        name: "support.function.test"
+      "2":
+        name: "paren.open.call.test"
+    end: "(\\))"
+    endCaptures:
+      "1":
+        name: "paren.close.call.test"
+    patterns: [
+      {
+        include: "$self"
+      }
+    ]
+    name: "fcall.test"
+  function_decl:
+    begin: "([[:alpha:]_][[:word:]!]*)(\\()"
+    beginCaptures:
+      "1":
+        name: "entity.name.function.test"
+      "2":
+        name: "paren.open.decl.test"
+    end: "(\\))(\\s*=)"
+    endCaptures:
+      "1":
+        name: "paren.close.decl"
+      "2":
+        name: "keyword.operator.update.test"
+    patterns: [
+      {
+        include: "$self"
+      }
+    ]
+    name: "fdecl.test"
+scopeName: "source.test"
