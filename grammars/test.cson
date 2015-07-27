@@ -4,47 +4,19 @@ fileTypes: [
 name: "Test"
 patterns: [
   {
-    include: "#function_decl"
+    include: "#p1"
   }
   {
-    include: "#function_call"
+    include: "#p2"
   }
 ]
 repository:
-  function_call:
-    begin: "([[:alpha:]_][[:word:]!]*)(\\()"
-    beginCaptures:
-      "1":
-        name: "support.function.test"
-      "2":
-        name: "paren.open.call.test"
-    end: "(\\))"
-    endCaptures:
-      "1":
-        name: "paren.close.call.test"
-    patterns: [
-      {
-        include: "$self"
-      }
-    ]
-    name: "fcall.test"
-  function_decl:
-    begin: "([[:alpha:]_][[:word:]!]*)(\\()"
-    beginCaptures:
-      "1":
-        name: "entity.name.function.test"
-      "2":
-        name: "paren.open.decl.test"
-    end: "(\\))(\\s*=)"
-    endCaptures:
-      "1":
-        name: "paren.close.decl"
-      "2":
-        name: "keyword.operator.update.test"
-    patterns: [
-      {
-        include: "$self"
-      }
-    ]
-    name: "fdecl.test"
+  p1:
+    begin: "cat"
+    end: "hat"
+    name: "p1.hat.test"
+  p2:
+    begin: "cat"
+    end: "boots"
+    name: "p2.boots.test"
 scopeName: "source.test"

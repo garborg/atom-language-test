@@ -10,18 +10,16 @@ describe "Test grammar", ->
     expect(grammar).toBeDefined()
     expect(grammar.scopeName).toBe "source.test"
 
-  it "does what I want", ->
-    {tokens} = grammar.tokenizeLine("f(x)yy")
+  it "passes the baseline", ->
+    {tokens} = grammar.tokenizeLine("catinhat")
     console.log(tokens)
-    expect(tokens[0]).toEqual value: "f", scopes: ["source.test", "fcall.test", "support.function.test"]
-    expect(tokens[1]).toEqual value: "(", scopes: ["source.test", "fcall.test", "paren.open.call.test"]
-    expect(tokens[2]).toEqual value: "x", scopes: ["source.test", "fcall.test"]
-    expect(tokens[3]).toEqual value: ")", scopes: ["source.test", "fcall.test", "paren.close.call.test"]
-    expect(tokens[4]).toEqual value: "yy", scopes: ["source.test"]
+    expect(tokens[0]).toEqual value: "cat", scopes: ["source.test", "p1.hat.test"]
+    expect(tokens[1]).toEqual value: "in", scopes: ["source.test", "p1.hat.test"]
+    expect(tokens[2]).toEqual value: "hat", scopes: ["source.test", "p1.hat.test"]
 
-  it "does what I don't want", ->
-    {tokens} = grammar.tokenizeLine("f(x)yy")
+  it "understands 'inboots' doesn't contain 'hat' but contains 'boots'", ->
+    {tokens} = grammar.tokenizeLine("catinboots")
     console.log(tokens)
-    expect(tokens[0]).toEqual value: "f", scopes: ["source.test", "fdecl.test", "entity.name.function.test"]
-    expect(tokens[1]).toEqual value: "(", scopes: ["source.test", "fdecl.test", "paren.open.decl.test"]
-    expect(tokens[2]).toEqual value: "x)yy", scopes: ["source.test", "fdecl.test"]
+    expect(tokens[0]).toEqual value: "cat", scopes: ["source.test", "p2.boots.test"]
+    expect(tokens[1]).toEqual value: "in", scopes: ["source.test", "p2.boots.test"]
+    expect(tokens[2]).toEqual value: "boots", scopes: ["source.test", "p2.boots.test"]
