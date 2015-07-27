@@ -2,7 +2,7 @@ describe "Test grammar", ->
   grammar = null
   beforeEach ->
     waitsForPromise ->
-      atom.packages.activatePackage("language-julia")
+      atom.packages.activatePackage("language-test")
     runs ->
       grammar = atom.grammars.grammarForScopeName("source.test")
 

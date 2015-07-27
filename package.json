@@ -1,0 +1,9 @@
+{
+  "name": "language-test",
+  "version": "0.3.1",
+  "keywords": [],
+  "license": "MIT",
+  "engines": {
+    "atom": ">=0.174.0 <2.0.0"
+  }
+}
